@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+        
+    <head>
+        <meta character=" UTF-8">
+        <title> bookapp </title>
+        <link rel ="stylesheet" href="{{url_for ('static', filename='style.css')}}">
+    </head>
+    <body>
+        <h1> pompom book store</h1>
+        <h2> List of new book</h2>
+            {% if books == [] %}
+                <p> There is no new book yet</p>
+            {% else %}
+                <table border="1">
+                    <tr>
+                        <th>Arrival day </th>
+                        <th>Book title </th>
+                        <th>Price </th>
+                    </tr>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.arrival_day }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.price }} euro</td>
+                        </tr>    
+                    {% endfor %}
+                </table>
+            {% endif %}
+        <a href="{{ url_for('form') }}">Edit</a>
+    </body>
+</html>
