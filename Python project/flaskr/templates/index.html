@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-        
-    <head>
-        <meta character=" UTF-8">
-        <title> bookapp </title>
-        <link rel ="stylesheet" href="{{url_for ('static', filename='style.css')}}">
-    </head>
-    <body>
-        <h1> pompom book store</h1>
-        <h2> List of new book</h2>
-            {% if books == [] %}
-                <p> There is no new book yet</p>
-            {% else %}
-                <table border="1">
-                    <tr>
-                        <th>Arrival day </th>
-                        <th>Book title </th>
-                        <th>Price </th>
-                    </tr>
-                    {% for book in books %}
-                        <tr>
-                            <td>{{ book.arrival_day }}</td>
-                            <td>{{ book.title }}</td>
-                            <td>{{ book.price }} euro</td>
-                        </tr>    
-                    {% endfor %}
-                </table>
-            {% endif %}
-        <a href="{{ url_for('form') }}">Edit</a>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>bookapp</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        /* Add some styles for the book display */
+        .book {
+            width: 200px;
+            height: 300px;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #999;
+            background-color: #fff;
+        }
+
+        .color-rectangle {
+            width: 100%;
+            height: 20px; /* Adjust the height as needed */
+            margin-bottom: 10px;
+        }
+
+        .color-inner {
+            height: 100%;
+            background-color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>pompom book store</h1>
+    <h2>List of new books</h2>
+    {% if books == [] %}
+        <p>There is no new book yet</p>
+    {% else %}
+        {% for book in books %}
+            <div class="book">
+                <div class="color-rectangle">
+                    <div class="color-inner" style="background-color: {{ book.color }};"></div>
+                </div>
+                <p>Arrival day: {{ book.arrival_day }}</p>
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.price }} euro</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <a href="{{ url_for('form') }}">Edit</a>
+</body>
+
 </html>
+
+

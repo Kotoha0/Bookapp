@@ -18,3 +18,11 @@ h1:after{
     box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
 
 }
+.book {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
