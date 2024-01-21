@@ -1,28 +1,27 @@
 h1{
     position: relative;
-    background: #dfefff;
-    box-shadow: 0px 0px 0px 5px #dfefff;
-    border: dashed 2px white;
+    color: white;
+    background: linear-gradient(135deg,#1FA3AF,#746586);
     padding: 0.2em 0.2em;
-    color: #454545;
+    border-radius: 10px;
+}
+h2{
+    color: white;
 }
 
-h1:after{
-    position: absolute;
-    content: '';
-    left: -7px;
-    top: -7px;
-    border-width: 0 0 15px 15px;
-    border-style: solid;
-    border-color: #fff #fff #a8d4ff;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
-
-}
 .book {
     width: 200px;
     height: 300px;
+    overflow: hidden;
     margin: 10px;
     padding: 10px;
     display: inline-block;
     text-align: center;
+}
+body {
+    background-color: #26282e;
+    color: white;
+}
+h3{
+    margin: 0;
 }

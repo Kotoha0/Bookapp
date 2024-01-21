@@ -6,7 +6,9 @@
     <title>bookapp</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <style>
-        /* Add some styles for the book display */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
         .book {
             width: 200px;
             height: 300px;
@@ -14,25 +16,58 @@
             padding: 10px;
             display: inline-block;
             text-align: center;
-            border: 1px solid #999;
-            background-color: #fff;
+            border: 1px solid white;
+            background-color: #323642;
+            border-radius: 10px;
+            color: white;
         }
 
         .color-rectangle {
             width: 100%;
-            height: 20px; /* Adjust the height as needed */
+            height: 20px;
             margin-bottom: 10px;
+            border-radius: 5x;
+            background-color: #323642;
         }
 
         .color-inner {
             height: 100%;
             background-color: inherit;
         }
+
+        #add-book {
+            display: inline-block;
+            padding: 10px;
+            background color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        #return-book {
+            display: inline-block;
+            padding: 10px;
+            background color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 
 <body>
     <h1>pompom book store</h1>
+
+    <form action="{{ url_for('index') }}" method="get">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" value="{{ search_query }}">
+        <input type="submit" value="Search">
+    </form>
+    <a id="add-book" href="{{ url_for('form') }}">Add a book</a>
+    <a id="return-book" href="{{ url_for('return_form') }}">Return a book</a>
+
     <h2>List of new books</h2>
     {% if books == [] %}
         <p>There is no new book yet</p>
@@ -45,10 +80,17 @@
                 <p>Arrival day: {{ book.arrival_day }}</p>
                 <h3>{{ book.title }}</h3>
                 <p>{{ book.price }} euro</p>
+
+                {% if book.rented_until %}
+                    <p>Rented until: {{ book.rented_until }}</p>
+                {% else %}
+                    <form action="{{ url_for('rent_book', title=book.title) }}" method="post">
+                        <input type="submit" value="Rent book">
+                    </form>
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}
-    <a href="{{ url_for('form') }}">Edit</a>
 </body>
 
 </html>
