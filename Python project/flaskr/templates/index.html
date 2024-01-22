@@ -38,7 +38,6 @@
         #add-book {
             display: inline-block;
             padding: 10px;
-            background color: #4CAF50;
             color: white;
             text-decoration: none;
             margin-top: 20px;
@@ -47,7 +46,14 @@
         #return-book {
             display: inline-block;
             padding: 10px;
-            background color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        #delete-book {
+            display: inline-block;
+            padding: 10px;
             color: white;
             text-decoration: none;
             margin-top: 20px;
@@ -67,6 +73,7 @@
     </form>
     <a id="add-book" href="{{ url_for('form') }}">Add a book</a>
     <a id="return-book" href="{{ url_for('return_form') }}">Return a book</a>
+    <a id="delete-book" href="{{ url_for('delete_book') }}">Delete a book</a>
 
     <h2>List of new books</h2>
     {% if books == [] %}

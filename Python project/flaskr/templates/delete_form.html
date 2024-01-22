@@ -21,15 +21,15 @@
 </head>
 
 <body>
-    <h1>Return a Book</h1>
-    <form action="{{ url_for('return_book') }}" method="post">
-        <label for="book">Select a rented book:</label>
+    <h1>Delete a Book</h1>
+    <form action="{{ url_for('delete_confirm') }}" method="post">
+        <label for="book">Select a book to delete:</label>
         <select name="book" id="book">
-            {% for book in rented_books %}
+            {% for book in all_books %}
                 <option value="{{ book[0] }}">{{ book[0] }}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="Return">
+        <input type="submit" value="Confirm">
     </form>
     <a id="back-home" href="{{ url_for('index') }}">Back to Home</a>
 </body>

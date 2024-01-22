@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
         
-    <head>
-        <meta character=" UTF-8">
-        <title> bookapp </title>
-        <link rel ="stylesheet" href="{{url_for ('static', filename='style.css')}}">
-    </head>
+<head>
+    <meta character=" UTF-8">
+    <title> bookapp </title>
+    <link rel ="stylesheet" href="{{url_for ('static', filename='style.css')}}">
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        #back-home {
+            display: inline-block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+</head>
     <body>
-        <h1>pompom book store</h1>
+        <h1>Add a book</h1>
         <form method="post" action="{{url_for('register')}}">
             <table border="1">
              <tr>
@@ -24,5 +37,6 @@
             <br>
             <input type="submit" value="Register">
         </form>
+    <a id="back-home" href="{{ url_for('index') }}">Back to Home</a>
     </body>
 </html>

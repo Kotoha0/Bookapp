@@ -103,3 +103,21 @@ def return_form():
 
     return render_template('return_form.html', rented_books=rented_books)
 
+@app.route('/delete_book')
+def delete_book():
+    con = sqlite3.connect(DATABASE)
+    all_books = con.execute('SELECT title FROM books').fetchall()
+    con.close()
+
+    return render_template('delete_form.html', all_books=all_books)
+
+@app.route('/delete_confirm', methods=['POST'])
+def delete_confirm():
+    deleted_book = request.form['book']
+
+    con = sqlite3.connect(DATABASE)
+    con.execute('DELETE FROM books WHERE title=?', [deleted_book])
+    con.commit()
+    con.close()
+
+    return redirect(url_for('index'))
